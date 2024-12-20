@@ -1,0 +1,27 @@
+\input{references_config.tex}
+
+% Create a reference and set its value
+\newcommand{\createref}[2]{
+  \expandafter\def\csname ref-#1\endcsname{} % Define the reference symbol
+  \def\tmp{html}%
+  \ifx\pdfhtmlmode\tmp
+    \expandafter\def\csname refval-#1\endcsname{\htmlprefix#2.html} % Set the reference value for HTML mode
+  \else
+    \def\tmp{pdf}%
+    \ifx\pdfhtmlmode\tmp
+      \expandafter\def\csname refval-#1\endcsname{\reporoot#2.pdf} % Set the reference value for PDF mode
+    \fi
+  \fi
+}
+ 
+% Get the value of a reference
+\makeatletter
+\newcommand{\getref}[1]{%
+  \expandafter\@firstofone\expandafter{\csname refval-#1\endcsname}%
+}
+\makeatother
+
+
+\input{references.tex}
+
+
