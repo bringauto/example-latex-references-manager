@@ -1,0 +1,3 @@
+[submodule "latex-references-manager"]
+	path = latex-references-manager
+	url = git@github.com:bringauto/latex-references-manager.git
